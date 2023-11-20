@@ -10,7 +10,7 @@ import (
 
 func Home(c *gin.Context) {
 	data := service.HttpGetHomeData()
-	c.JSON(http.StatusOK, data)
+	c.JSON(http.StatusOK, gin.H{"items": data})
 }
 
 func Live(c *gin.Context) {

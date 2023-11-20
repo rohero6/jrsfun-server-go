@@ -11,9 +11,9 @@ func main() {
 	manager.InitManager()
 	cache.InitGoCaches()
 	engine := router.StartRouter()
-	err := engine.Run(":3006")
+	err := engine.Run(":3000")
 	if err != nil {
-		log.Fatalf("run err:%v",err)
+		log.Fatalf("run err:%v", err)
 		return
 	}
 }
