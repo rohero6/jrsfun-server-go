@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"jrsfun-server-go/cache"
 	"jrsfun-server-go/manager"
 	"jrsfun-server-go/model"
@@ -133,7 +134,8 @@ func getTeam(element *goquery.Selection) model.Team {
 func getZhibos(element *goquery.Selection) []model.ZhiboProp {
 	zhibos := []model.ZhiboProp{}
 	element.Find(".lab_channel .ok").Each(func(i int, channel *goquery.Selection) {
-		name := "线路" + channel.Find("strong").Text()
+		i++
+		name := fmt.Sprintf("线路%v", i)
 		url, _ := channel.Attr("href")
 		zhibos = append(zhibos, model.ZhiboProp{Name: name, URL: url})
 	})
