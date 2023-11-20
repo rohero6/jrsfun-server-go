@@ -8,9 +8,9 @@ import (
 func StartRouter() *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
-	router.Any("/api/home", api.Home)
-	router.Any("/api/live", api.Live)
-	router.Any("/api/channel", api.Channel)
+	router.Any("//api/home", api.Home)
+	router.Any("//api/live", api.Live)
+	router.Any("//api/channel", api.Channel)
 
 	return router
 }
