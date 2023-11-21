@@ -18,7 +18,9 @@ func HttpGetHomeData() []model.Item {
 	val, exist := cache.GoCache.Get(key)
 	if !exist {
 		data := GetHomeData()
-		go cache.GoCache.Set(key, data, 5*time.Minute)
+		if data != nil {
+			go cache.GoCache.Set(key, data, 5*time.Minute)
+		}
 		return data
 	} else {
 		data, _ := val.([]model.Item)
@@ -28,6 +30,7 @@ func HttpGetHomeData() []model.Item {
 func GetHomeData() []model.Item {
 	url := "http://m.jrsbxj.com/"
 	page, err := manager.Context.NewPage()
+	defer page.Close()
 	if err != nil {
 		log.Printf("new page has err: %v", err)
 		return nil
