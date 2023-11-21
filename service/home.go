@@ -30,7 +30,6 @@ func HttpGetHomeData() []model.Item {
 func GetHomeData() []model.Item {
 	url := "http://m.jrsbxj.com/"
 	page, err := manager.Context.NewPage()
-	defer page.Close()
 	if err != nil {
 		log.Printf("new page has err: %v", err)
 		return nil
@@ -82,6 +81,10 @@ func GetHomeData() []model.Item {
 	})
 
 	wg.Wait()
+	err = page.Close()
+	if err != nil {
+		log.Printf("page.Close() error: %v", err)
+	}
 	return data
 }
 

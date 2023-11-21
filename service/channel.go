@@ -5,6 +5,7 @@ import (
 	"jrsfun-server-go/cache"
 	"jrsfun-server-go/manager"
 	"jrsfun-server-go/model"
+	"log"
 	"sort"
 	"strings"
 	"sync"
@@ -57,7 +58,10 @@ func GetChannel(streams *[]model.StreamProp, domain string) model.ChannelResp {
 			page, _ := manager.Context.NewPage()
 			m3u8 := NavigateAndHandleLogic(page, (*streams)[idx].M3U8URL, domain)
 			(*streams)[idx].M3U8URL = m3u8
-			page.Close()
+			err := page.Close()
+			if err != nil {
+				log.Printf("err get channel")
+			}
 		}(i)
 	}
 	wg.Wait()
