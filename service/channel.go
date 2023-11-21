@@ -58,10 +58,13 @@ func GetChannel(streams *[]model.StreamProp, domain string) model.ChannelResp {
 			page, _ := manager.Context.NewPage()
 			m3u8 := NavigateAndHandleLogic(page, (*streams)[idx].M3U8URL, domain)
 			(*streams)[idx].M3U8URL = m3u8
-			err := page.Close()
-			if err != nil {
-				log.Printf("err get channel")
+			if page != nil {
+				err := page.Close()
+				if err != nil {
+					log.Printf("err get channel")
+				}
 			}
+
 		}(i)
 	}
 	wg.Wait()

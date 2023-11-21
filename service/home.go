@@ -81,9 +81,11 @@ func GetHomeData() []model.Item {
 	})
 
 	wg.Wait()
-	err = page.Close()
-	if err != nil {
-		log.Printf("page.Close() error: %v", err)
+	if page != nil {
+		err = page.Close()
+		if err != nil {
+			log.Printf("page.Close() error: %v", err)
+		}
 	}
 	return data
 }
