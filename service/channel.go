@@ -33,13 +33,13 @@ func HandlerChannel(link string) model.ChannelResp {
 					}
 				}
 				// 对名字进行排序，带有"主播"的排在后面
-				sort.Slice(data.Streams, func(i, j int) bool {
-					return strings.Contains(data.Streams[i].Name, "主播") && !strings.Contains(data.Streams[j].Name, "主播")
+				sort.Slice(res.Streams, func(i, j int) bool {
+					return strings.Contains(res.Streams[i].Name, "主播") && !strings.Contains(res.Streams[j].Name, "主播")
 				})
 				if res.Streams != nil {
 					go cache.GoCache.Set(key, res, 60*time.Minute)
 				}
-				return data
+				return res
 			}
 		}
 
