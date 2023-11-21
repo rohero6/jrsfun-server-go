@@ -32,7 +32,8 @@ func GetHomeData() []model.Item {
 	page, err := manager.Context.NewPage()
 	if err != nil {
 		log.Printf("new page has err: %v", err)
-		return nil
+		manager.InitManager()
+		page, _ = manager.Context.NewPage()
 	}
 	page.Goto(url)
 	html, err := page.Content()
