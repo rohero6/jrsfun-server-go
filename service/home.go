@@ -121,7 +121,18 @@ func getLab(element *goquery.Selection) (model.Lab, string) {
 		LabEventBGColor: labEventBgColor,
 		BF:              "",
 		ID:              id,
+		Kind:            GetBallType(dataLid),
 	}, subStatus
+}
+func GetBallType(dataLid string) model.Kind {
+	kind := strings.Split(dataLid, ",")[1]
+	if kind == "1" {
+		return model.Football
+	} else if kind == "2" {
+		return model.Basketball
+	} else {
+		return model.Other
+	}
 }
 
 func getTeam(element *goquery.Selection) model.Team {
