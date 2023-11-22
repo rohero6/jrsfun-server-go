@@ -63,7 +63,9 @@ func GetLiveData(link string) (model.LiveResponse, error) {
 			dataPlay, _ := element.Attr("data-play")
 			dataURLID, _ := element.Attr("data-urlid")
 			tempLink := domain + dataPlay + dataURLID
-
+			if !strings.HasSuffix(dataPlay, "=") {
+				tempLink = domain + dataPlay
+			}
 			// 将数据发送到 channel
 			streamCh <- model.StreamProp{
 				M3U8URL: tempLink,

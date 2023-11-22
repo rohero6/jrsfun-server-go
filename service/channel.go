@@ -11,6 +11,8 @@ import (
 	"sync"
 	"time"
 
+	u "net/url"
+
 	"github.com/PuerkitoBio/goquery"
 	"github.com/playwright-community/playwright-go"
 )
@@ -96,13 +98,15 @@ func NavigateAndHandleLogic(page playwright.Page, url string, domain string) str
 		}
 		fmt.Println(src)
 		var m3u8 string
-		split := strings.Split(src, "id=")
-		if len(split) > 1 {
-			m3u8 = split[1]
+
+		srcs := strings.SplitN(src, "id=", 2)
+		if len(srcs) > 1 {
+			m3u8 = srcs[1]
 		}
 		if len(m3u8) > 0 && !strings.HasPrefix(m3u8, "http") {
 			m3u8 = "https:" + m3u8
 		}
+		m3u8, _ = u.QueryUnescape(m3u8)
 		return m3u8
 	}
 	return ""
