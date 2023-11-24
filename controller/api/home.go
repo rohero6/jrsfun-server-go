@@ -39,9 +39,9 @@ func Channel(c *gin.Context) {
 
 func Movie(c *gin.Context) {
 	movieList := []model.MovieSite{
-		{Icon: "https://ddys.pro/favicon-32x32.png", Url: "https://ddys.pro/"},
-		{Icon: "https://xiaoxiaojia.oss-cn-shanghai.aliyuncs.com/statics/img/logo2.png", Url: "https://www.libvio.me/"},
-		{Icon: "https://zxzjbackup.oss-cn-shenzhen.aliyuncs.com/logo.png", Url: "https://www.zxzjhd.com/"},
+		{Icon: "https://toolsdar.cn/img/1680313844-Pasted.png", Url: "https://ddys.pro/", Name: "低端影视"},
+		{Icon: "https://toolsdar.cn/img/1676522049-Pasted.png", Url: "https://www.libvio.me/", Name: "LIBVIO影视"},
+		{Icon: "https://toolsdar.cn/img/1673323796-Pasted.png", Url: "https://www.zxzjhd.com/", Name: "在线之家"},
 	}
 	c.JSON(http.StatusOK, gin.H{"movie_sites": movieList})
 }

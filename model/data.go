@@ -56,6 +56,7 @@ type Team struct {
 type MovieSite struct {
 	Icon string `json:"icon"`
 	Url  string `json:"url"`
+	Name string `json:"name"`
 }
 
 type Kind string
