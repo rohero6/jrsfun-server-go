@@ -1,6 +1,7 @@
 package api
 
 import (
+	"jrsfun-server-go/model"
 	"jrsfun-server-go/service"
 	"log"
 	"net/http"
@@ -34,4 +35,13 @@ func Channel(c *gin.Context) {
 	}
 	data := service.HandlerChannel(link)
 	c.JSON(http.StatusOK, data)
+}
+
+func Movie(c *gin.Context) {
+	movieList := []model.MovieSite{
+		{Icon: "https://ddys.pro/favicon-32x32.png", Url: "https://ddys.pro/"},
+		{Icon: "https://xiaoxiaojia.oss-cn-shanghai.aliyuncs.com/statics/img/logo2.png", Url: "https://www.libvio.me/"},
+		{Icon: "https://zxzjbackup.oss-cn-shenzhen.aliyuncs.com/logo.png", Url: "https://www.zxzjhd.com/"},
+	}
+	c.JSON(http.StatusOK, movieList)
 }

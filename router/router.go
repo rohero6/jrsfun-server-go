@@ -15,6 +15,7 @@ func StartRouter() *gin.Engine {
 	router.Any("//api/home/", api.Home)
 	router.Any("/api/live", api.Live)
 	router.Any("/api/channel", api.Channel)
+	router.Any("/api/movie", api.Movie)
 
 	return router
 }

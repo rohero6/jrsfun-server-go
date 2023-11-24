@@ -12,9 +12,9 @@ type ChannelResp struct {
 type Item struct {
 	Lab
 	Team
-	SubStatus  string       `json:"sub_status"`
-	IsNotStart bool         `json:"is_not_start"`
-	Zhibos     []ZhiboProp  `json:"zhibos"`
+	SubStatus  string      `json:"sub_status"`
+	IsNotStart bool        `json:"is_not_start"`
+	Zhibos     []ZhiboProp `json:"zhibos"`
 }
 
 type ZhiboProp struct {
@@ -50,7 +50,12 @@ type Team struct {
 	TeamHomeIcon string `json:"team_home_icon"`
 	TeamAway     string `json:"team_away"`
 	TeamAwayIcon string `json:"team_away_icon"`
-	Bf string `json:"bf"`
+	Bf           string `json:"bf"`
+}
+
+type MovieSite struct {
+	Icon string `json:"icon"`
+	Url  string `json:"url"`
 }
 
 type Kind string
@@ -60,7 +65,7 @@ const (
 	Basketball Kind = "basketball"
 	Football   Kind = "football"
 	Other      Kind = "other"
-	ChannelKey = "channel:%v"
-	StreamKey = "stream:%v"
-	LiveKey = "live:%v"
+	ChannelKey      = "channel:%v"
+	StreamKey       = "stream:%v"
+	LiveKey         = "live:%v"
 )
