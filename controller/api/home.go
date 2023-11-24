@@ -43,5 +43,5 @@ func Movie(c *gin.Context) {
 		{Icon: "https://xiaoxiaojia.oss-cn-shanghai.aliyuncs.com/statics/img/logo2.png", Url: "https://www.libvio.me/"},
 		{Icon: "https://zxzjbackup.oss-cn-shenzhen.aliyuncs.com/logo.png", Url: "https://www.zxzjhd.com/"},
 	}
-	c.JSON(http.StatusOK, movieList)
+	c.JSON(http.StatusOK, gin.H{"movie_sites": movieList})
 }
