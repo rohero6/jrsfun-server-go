@@ -15,18 +15,24 @@ import (
 )
 
 func HttpGetLiveData(link string) (model.LiveResponse, error) {
+	var data model.LiveResponse
 	key := fmt.Sprintf(model.LiveKey, link)
 	val, exist := cache.GoCache.Get(key)
 	if !exist {
-		data, _ := GetLiveData(link)
+		data, _ = GetLiveData(link)
 		if data.Streams != nil {
-			go cache.GoCache.Set(key, data, 3*time.Hour)
+			go cache.GoCache.Set(key, data, 30*time.Minute)
 		}
-		return data, nil
 	} else {
-		data, _ := val.(model.LiveResponse)
-		return data, nil
+		data, _ = val.(model.LiveResponse)
 	}
+	if data.Streams == nil || len(data.Streams) == 0 {
+		data, _ = GetLiveData(link)
+		if data.Streams != nil {
+			go cache.GoCache.Set(key, data, 30*time.Minute)
+		}
+	}
+	return data, nil
 }
 func GetLiveData(link string) (model.LiveResponse, error) {
 	domain := strings.Split(link, ".com")[0] + ".com"
