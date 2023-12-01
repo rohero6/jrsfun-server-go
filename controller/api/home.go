@@ -44,6 +44,7 @@ func Movie(c *gin.Context) {
 		{Icon: "https://toolsdar.cn/img/1673323796-Pasted.png", Url: "https://www.zxzjhd.com/", Name: "在线之家"},
 		{Icon: "https://api.iowen.cn/favicon/cokemv.link.png", Url: "https://cokemv.link/", Name: "COKEMV影视"},
 		{Icon: "https://www.mjtt.fun/template/mojia/asset/img/logo.png", Url: "https://www.mjtt.fun/", Name: "美剧天堂"},
+		{Icon: "https://dianyi.ng/mxstatic/image/logo.png", Url: "https://dianyi.ng/", Name: "电影先生"},
 	}
 	c.JSON(http.StatusOK, gin.H{"movie_sites": movieList})
 }
