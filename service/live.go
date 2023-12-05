@@ -144,5 +144,9 @@ func GetFirstM3u8(rawUrl string, domain string) (string, error) {
 			}
 		}
 	})
+	ht := "https:"
+	if len(strings.Split(m3u8, ht)) == 1 {
+		m3u8 = ht + m3u8
+	}
 	return m3u8, nil
 }
